@@ -6,14 +6,14 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TodoServerApp.Migrations
 {
     /// <inheritdoc />
-    public partial class NameRust : Migration
+    public partial class AddRest : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
                 name: "Title",
-                table: "Taskitems",
+                table: "TaskItems",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "",
@@ -23,7 +23,7 @@ namespace TodoServerApp.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "Description",
-                table: "Taskitems",
+                table: "TaskItems",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "",
@@ -32,32 +32,32 @@ namespace TodoServerApp.Migrations
                 oldNullable: true);
 
             migrationBuilder.UpdateData(
-                table: "Taskitems",
+                table: "TaskItems",
                 keyColumn: "Id",
                 keyValue: 1,
-                column: "CreateDate",
-                value: new DateTime(2025, 11, 28, 0, 8, 6, 300, DateTimeKind.Local).AddTicks(4270));
+                column: "CreatedDate",
+                value: new DateTime(2025, 10, 24, 19, 12, 11, 562, DateTimeKind.Local).AddTicks(7199));
 
             migrationBuilder.UpdateData(
-                table: "Taskitems",
+                table: "TaskItems",
                 keyColumn: "Id",
                 keyValue: 2,
-                column: "CreateDate",
-                value: new DateTime(2025, 11, 28, 0, 8, 6, 300, DateTimeKind.Local).AddTicks(4286));
+                column: "CreatedDate",
+                value: new DateTime(2025, 10, 24, 19, 12, 11, 562, DateTimeKind.Local).AddTicks(7209));
 
             migrationBuilder.UpdateData(
-                table: "Taskitems",
+                table: "TaskItems",
                 keyColumn: "Id",
                 keyValue: 3,
-                column: "CreateDate",
-                value: new DateTime(2025, 11, 28, 0, 8, 6, 300, DateTimeKind.Local).AddTicks(4288));
+                column: "CreatedDate",
+                value: new DateTime(2025, 10, 24, 19, 12, 11, 562, DateTimeKind.Local).AddTicks(7210));
 
             migrationBuilder.UpdateData(
-                table: "Taskitems",
+                table: "TaskItems",
                 keyColumn: "Id",
                 keyValue: 4,
-                column: "CreateDate",
-                value: new DateTime(2025, 11, 28, 0, 8, 6, 300, DateTimeKind.Local).AddTicks(4289));
+                column: "CreatedDate",
+                value: new DateTime(2025, 10, 24, 19, 12, 11, 562, DateTimeKind.Local).AddTicks(7211));
         }
 
         /// <inheritdoc />
@@ -65,7 +65,7 @@ namespace TodoServerApp.Migrations
         {
             migrationBuilder.AlterColumn<string>(
                 name: "Title",
-                table: "Taskitems",
+                table: "TaskItems",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
@@ -73,39 +73,39 @@ namespace TodoServerApp.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "Description",
-                table: "Taskitems",
+                table: "TaskItems",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)");
 
             migrationBuilder.UpdateData(
-                table: "Taskitems",
+                table: "TaskItems",
                 keyColumn: "Id",
                 keyValue: 1,
-                column: "CreateDate",
-                value: new DateTime(2025, 11, 25, 23, 29, 51, 267, DateTimeKind.Local).AddTicks(7074));
+                column: "CreatedDate",
+                value: new DateTime(2025, 10, 24, 17, 35, 6, 816, DateTimeKind.Local).AddTicks(8492));
 
             migrationBuilder.UpdateData(
-                table: "Taskitems",
+                table: "TaskItems",
                 keyColumn: "Id",
                 keyValue: 2,
-                column: "CreateDate",
-                value: new DateTime(2025, 11, 25, 23, 29, 51, 267, DateTimeKind.Local).AddTicks(7093));
+                column: "CreatedDate",
+                value: new DateTime(2025, 10, 24, 17, 35, 6, 816, DateTimeKind.Local).AddTicks(8504));
 
             migrationBuilder.UpdateData(
-                table: "Taskitems",
+                table: "TaskItems",
                 keyColumn: "Id",
                 keyValue: 3,
-                column: "CreateDate",
-                value: new DateTime(2025, 11, 25, 23, 29, 51, 267, DateTimeKind.Local).AddTicks(7094));
+                column: "CreatedDate",
+                value: new DateTime(2025, 10, 24, 17, 35, 6, 816, DateTimeKind.Local).AddTicks(8505));
 
             migrationBuilder.UpdateData(
-                table: "Taskitems",
+                table: "TaskItems",
                 keyColumn: "Id",
                 keyValue: 4,
-                column: "CreateDate",
-                value: new DateTime(2025, 11, 25, 23, 29, 51, 267, DateTimeKind.Local).AddTicks(7096));
+                column: "CreatedDate",
+                value: new DateTime(2025, 10, 24, 17, 35, 6, 816, DateTimeKind.Local).AddTicks(8506));
         }
     }
 }

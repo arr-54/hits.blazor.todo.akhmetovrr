@@ -17,10 +17,75 @@ namespace TodoServerApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("ProductVersion", "8.0.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("TodoServerApp.Data.ApplicationUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -220,7 +285,7 @@ namespace TodoServerApp.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("TodoServerApp.Data.Taskitem", b =>
+            modelBuilder.Entity("TodoServerApp.Data.TaskItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -228,7 +293,7 @@ namespace TodoServerApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("CreateDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -244,36 +309,36 @@ namespace TodoServerApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Taskitems");
+                    b.ToTable("TaskItems");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreateDate = new DateTime(2025, 11, 28, 0, 8, 6, 300, DateTimeKind.Local).AddTicks(4270),
-                            Description = "Описание задачи 1",
-                            Title = "Задача 1"
+                            CreatedDate = new DateTime(2025, 10, 24, 19, 12, 11, 562, DateTimeKind.Local).AddTicks(7199),
+                            Description = "�������� ������ 1",
+                            Title = "������ 1"
                         },
                         new
                         {
                             Id = 2,
-                            CreateDate = new DateTime(2025, 11, 28, 0, 8, 6, 300, DateTimeKind.Local).AddTicks(4286),
-                            Description = "Описание задачи 2",
-                            Title = "Задача 2"
+                            CreatedDate = new DateTime(2025, 10, 24, 19, 12, 11, 562, DateTimeKind.Local).AddTicks(7209),
+                            Description = "�������� ������ 2",
+                            Title = "������ 2"
                         },
                         new
                         {
                             Id = 3,
-                            CreateDate = new DateTime(2025, 11, 28, 0, 8, 6, 300, DateTimeKind.Local).AddTicks(4288),
-                            Description = "Описание задачи 3",
-                            Title = "Задача 3"
+                            CreatedDate = new DateTime(2025, 10, 24, 19, 12, 11, 562, DateTimeKind.Local).AddTicks(7210),
+                            Description = "�������� ������ 3",
+                            Title = "������ 3"
                         },
                         new
                         {
                             Id = 4,
-                            CreateDate = new DateTime(2025, 11, 28, 0, 8, 6, 300, DateTimeKind.Local).AddTicks(4289),
-                            Description = "Описание задачи 4",
-                            Title = "Задача 4"
+                            CreatedDate = new DateTime(2025, 10, 24, 19, 12, 11, 562, DateTimeKind.Local).AddTicks(7211),
+                            Description = "�������� ������ 4",
+                            Title = "������ 4"
                         });
                 });
 

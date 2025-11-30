@@ -1,47 +1,55 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TodoServerApp.Data.Interfaces;
 
 namespace TodoServerApp.Data.Services
 {
-    public class MSSQlDataService(ApplicationDbContext context) : IDataService
+    public class MSSQLDataService(ApplicationDbContext context) : IDataService
     {
-        public async Task<IEnumerable<Taskitem>> GetAllAsync()
+        public async Task<IEnumerable<TaskItem>> GetAllAsync()
         {
-            return await context.Taskitems.ToArrayAsync();
+            return await context.TaskItems.ToArrayAsync();
         }
 
-        public async Task SaveAsync(Taskitem Taskitem)
+        public async Task AddAsync(TaskItem taskItem)
         {
-            await File.WriteAllTextAsync("C:\\logs\\log.log", "Pressed!");
-            if (Taskitem.Id == 0)
-            {
-                Taskitem.CreateDate = DateTime.Now;
-                await context.Taskitems.AddAsync(Taskitem);
-            }
-            else
-            {
-                context.Taskitems.Update(Taskitem);
-            }
+            await context.TaskItems.AddAsync(taskItem);
             await context.SaveChangesAsync();
         }
 
-        public async Task<Taskitem?> GetTaskAsync(int id)
+        public async Task UpdateAsync(TaskItem taskItem)
         {
-            return await context.Taskitems.FirstOrDefaultAsync(x => x.Id == id);
+            var local = context.TaskItems.Local.FirstOrDefault(x => x.Id == taskItem.Id);
+            if (local != null)
+            {
+                context.Entry(local).State = EntityState.Detached;
+            }
+
+            context.TaskItems.Update(taskItem);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task SaveAsync(TaskItem taskItem)
+        {
+            if (taskItem.Id == 0)
+            {
+                await AddAsync(taskItem);
+            }
+            else
+            {
+                await UpdateAsync(taskItem);
+            }
+        }
+
+        public async Task<TaskItem> GetTaskAsync(int id)
+        {
+            return await context.TaskItems.FirstAsync(x => x.Id == id);
         }
 
         public async Task DeleteAsync(int id)
         {
-            var taskitem = await context.Taskitems.FirstOrDefaultAsync(x => x.Id == id);
-            if (taskitem == null)
-                return;
-
-            context.Taskitems.Remove(taskitem);
+            var taskItem = await context.TaskItems.FirstAsync(x => x.Id == id);
+            context.TaskItems.Remove(taskItem);
             await context.SaveChangesAsync();
-        }
-
-        public async Task<IEnumerable<Taskitem>> GetTaskitemsAsync()
-        {
-            return await context.Taskitems.ToListAsync();
         }
     }
 }

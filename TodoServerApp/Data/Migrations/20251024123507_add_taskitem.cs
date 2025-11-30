@@ -14,30 +14,30 @@ namespace TodoServerApp.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Taskitems",
+                name: "TaskItems",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     FinishDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Taskitems", x => x.Id);
+                    table.PrimaryKey("PK_TaskItems", x => x.Id);
                 });
 
             migrationBuilder.InsertData(
-                table: "Taskitems",
-                columns: new[] { "Id", "CreateDate", "Description", "FinishDate", "Title" },
+                table: "TaskItems",
+                columns: new[] { "Id", "CreatedDate", "Description", "FinishDate", "Title" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 11, 25, 23, 29, 51, 267, DateTimeKind.Local).AddTicks(7074), "Описание задачи 1", null, "Задача 1" },
-                    { 2, new DateTime(2025, 11, 25, 23, 29, 51, 267, DateTimeKind.Local).AddTicks(7093), "Описание задачи 2", null, "Задача 2" },
-                    { 3, new DateTime(2025, 11, 25, 23, 29, 51, 267, DateTimeKind.Local).AddTicks(7094), "Описание задачи 3", null, "Задача 3" },
-                    { 4, new DateTime(2025, 11, 25, 23, 29, 51, 267, DateTimeKind.Local).AddTicks(7096), "Описание задачи 4", null, "Задача 4" }
+                    { 1, new DateTime(2025, 10, 24, 17, 35, 6, 816, DateTimeKind.Local).AddTicks(8492), "Описание задачи 1", null, "Задача 1" },
+                    { 2, new DateTime(2025, 10, 24, 17, 35, 6, 816, DateTimeKind.Local).AddTicks(8504), "Описание задачи 2", null, "Задача 2" },
+                    { 3, new DateTime(2025, 10, 24, 17, 35, 6, 816, DateTimeKind.Local).AddTicks(8505), "Описание задачи 3", null, "Задача 3" },
+                    { 4, new DateTime(2025, 10, 24, 17, 35, 6, 816, DateTimeKind.Local).AddTicks(8506), "Описание задачи 4", null, "Задача 4" }
                 });
         }
 
@@ -45,7 +45,7 @@ namespace TodoServerApp.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Taskitems");
+                name: "TaskItems");
         }
     }
 }

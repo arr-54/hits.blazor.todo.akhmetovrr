@@ -1,6 +1,4 @@
-﻿@using Microsoft.AspNetCore.Components.Authorization
-@using Microsoft.AspNetCore.Components.Routing
-@using TodoServerApp.Components.Account.Shared
+﻿@using TodoServerApp.Components.Account.Shared
 <Router AppAssembly="typeof(Program).Assembly">
     <Found Context="routeData">
         <AuthorizeRouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)">

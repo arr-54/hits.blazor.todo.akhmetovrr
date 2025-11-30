@@ -12,7 +12,7 @@ using TodoServerApp.Data;
 namespace TodoServerApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251125182952_add_taskitem")]
+    [Migration("20251024123507_add_taskitem")]
     partial class add_taskitem
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace TodoServerApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("ProductVersion", "8.0.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -223,7 +223,7 @@ namespace TodoServerApp.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("TodoServerApp.Data.Taskitem", b =>
+            modelBuilder.Entity("TodoServerApp.Data.TaskItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -231,7 +231,7 @@ namespace TodoServerApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("CreateDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -245,34 +245,34 @@ namespace TodoServerApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Taskitems");
+                    b.ToTable("TaskItems");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreateDate = new DateTime(2025, 11, 25, 23, 29, 51, 267, DateTimeKind.Local).AddTicks(7074),
+                            CreatedDate = new DateTime(2025, 10, 24, 17, 35, 6, 816, DateTimeKind.Local).AddTicks(8492),
                             Description = "Описание задачи 1",
                             Title = "Задача 1"
                         },
                         new
                         {
                             Id = 2,
-                            CreateDate = new DateTime(2025, 11, 25, 23, 29, 51, 267, DateTimeKind.Local).AddTicks(7093),
+                            CreatedDate = new DateTime(2025, 10, 24, 17, 35, 6, 816, DateTimeKind.Local).AddTicks(8504),
                             Description = "Описание задачи 2",
                             Title = "Задача 2"
                         },
                         new
                         {
                             Id = 3,
-                            CreateDate = new DateTime(2025, 11, 25, 23, 29, 51, 267, DateTimeKind.Local).AddTicks(7094),
+                            CreatedDate = new DateTime(2025, 10, 24, 17, 35, 6, 816, DateTimeKind.Local).AddTicks(8505),
                             Description = "Описание задачи 3",
                             Title = "Задача 3"
                         },
                         new
                         {
                             Id = 4,
-                            CreateDate = new DateTime(2025, 11, 25, 23, 29, 51, 267, DateTimeKind.Local).AddTicks(7096),
+                            CreatedDate = new DateTime(2025, 10, 24, 17, 35, 6, 816, DateTimeKind.Local).AddTicks(8506),
                             Description = "Описание задачи 4",
                             Title = "Задача 4"
                         });
